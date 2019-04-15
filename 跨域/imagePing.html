@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>imagePing</title>
+</head>
+<body>
+  <script>
+    // 图像ping 常用于跟踪用户点击页面或动态广告曝光次数 但是有两个缺点
+    // 1. 只能发生GET请求
+    // 2. 无法访问服务器的响应文本
+    let img = new Image();
+    img.onload = img.onerror = function() {
+      alert('Done!');
+    }
+    img.src = 'http://www.example.com/test?name=Nich';
+  </script>
+</body>
+</html>
