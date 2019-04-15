@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Jsonp</title>
+</head>
+<body>
+  <script>
+  /**
+   * JSONP由两部分组成： 回调函数和数据
+   * */
+  function handleResponse(response) {
+    console.log(response)
+    alert(`You' re at IP address ${response.ip}, which is in ${response.city}, ${response.region_name}`);
+  }
+
+  let script = document.createElement("script");
+  script.src = "http://localhost:3000/say/?callback=handleResponse";
+  document.body.insertBefore(script, document.body.firstChild)
+  </script>
+</body>
+</html>
