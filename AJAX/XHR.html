@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const createXHR = () => {
+      if(typeof XMLHttpRequest != "undefined") {
+        return new XMLHttpRequest();
+      } else if (typeof ActiveXObject != "undefined") {
+        if(typeof arguments.callee.activeXString != 'string') {
+          let version = ["MSXML2.XMLHttp.6.0", "MSXML2.XMLHttp.3.0", "MSXML2.XMLHttp"],
+          i, len;
+          for(i=0, len = version.length; i < len; i++) {
+            try {
+              new ActiveXObject(version[i]);
+              arguments.callee.activeXString = version[i];
+              break;
+            } catch (ex) {
+
+            }
+          }
+        }
+        return new ActiveXObject(arguments.callee.activeXString);
+      } else {
+        throw new Error("No XHR object avaliable.");
+      }
+    }
+
+    // let xhr = createXHR();
+    let xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function() {
+      if(xhr.readyState === 4) {
+        if(xhr.status >= 200 && xhr.status <= 300 || xhr.status === 304) {
+          console.log(xhr.responseText);
+        } else {
+          console.error(xhr.status);
+        }
+      }
+    }
+    xhr.open("GET", "", true);
+    xhr.setRequestHeader("", "")
+    xhr.send();
+  </script>
+</body>
+</html>
