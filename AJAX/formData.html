@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+    <form enctype="multipart/form-data" name="fileinfo" id="form1">
+      <label>Your email address:</label>
+      <input type="email" autocomplete="on" autofocus name="userid" placeholder="email" required size="32" maxlength="64" /><br />
+      <label>Custom file label:</label>
+      <input type="text" name="filelabel" size="12" maxlength="32" /><br />
+      <input type="button" value="Stash the file!" onclick="submitt()"/>
+    </form>
+    <div></div>
+    <script>
+      function submitt() {
+        let form = document.querySelector('#form1')
+        let formData = new FormData(form)
+        console.log(formData.get("userid"))
+        console.log(formData.get("filelabel"))
+      }
+    </script>
+</body>
+</html>
